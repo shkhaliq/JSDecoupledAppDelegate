@@ -3,7 +3,6 @@
 //
 //  Created by Javier Soto on 9/9/13.
 //  Copyright (c) 2013 JavierSoto. All rights reserved.
-//
 
 #import <UIKit/UIKit.h>
 
@@ -105,29 +104,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 #if JSIOS7SDK
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler;
-#endif
-
-#if JSIOS8SDK
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings;
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler NS_AVAILABLE_IOS(8_0);
-#endif
-
-#if JSIOS9SDK
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void(^)())completionHandler NS_AVAILABLE_IOS(9_0);
-#endif
-
-@end
-
-@protocol JSApplicationLocalNotificationsDelegate <NSObject>
-
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification;
-
-#if JSIOS8SDK
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void(^)())completionHandler;
-#endif
-
-#if JSIOS9SDK
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier forLocalNotification:(UILocalNotification *)notification withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void(^)())completionHandler NS_AVAILABLE_IOS(9_0);
 #endif
 
 @end

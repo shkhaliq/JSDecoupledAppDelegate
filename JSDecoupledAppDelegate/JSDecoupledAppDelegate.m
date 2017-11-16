@@ -72,7 +72,6 @@ static NSArray *JSApplicationDelegateSubprotocols()
                       NSStringFromProtocol(@protocol(JSApplicationDefaultOrientationDelegate)),
                       NSStringFromProtocol(@protocol(JSApplicationBackgroundFetchDelegate)),
                       NSStringFromProtocol(@protocol(JSApplicationRemoteNotificationsDelegate)),
-                      NSStringFromProtocol(@protocol(JSApplicationLocalNotificationsDelegate)),
                       NSStringFromProtocol(@protocol(JSApplicationStateRestorationDelegate)),
                       NSStringFromProtocol(@protocol(JSApplicationURLResourceOpeningDelegate)),
                       NSStringFromProtocol(@protocol(JSApplicationShortcutItemDelegate)),
@@ -241,50 +240,6 @@ static JSDecoupledAppDelegate *sharedAppDelegate = nil;
     [self.remoteNotificationsDelegate application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
 }
 #endif
-
-#if JSIOS8SDK
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
-{
-    [self.remoteNotificationsDelegate application:application didRegisterUserNotificationSettings:notificationSettings];
-}
-
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler NS_AVAILABLE_IOS(8_0)
-{
-    [self.remoteNotificationsDelegate application:application handleActionWithIdentifier:identifier forRemoteNotification:userInfo completionHandler:completionHandler];
-}
-
-#if JSIOS9SDK
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void(^)())completionHandler
-{
-    [self.remoteNotificationsDelegate application:application handleActionWithIdentifier:identifier forRemoteNotification:userInfo withResponseInfo:responseInfo completionHandler:completionHandler];
-}
-#endif
-
-
-#endif
-
-#pragma mark - JSApplicationLocalNotificationsDelegate
-
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
-{
-    [self.localNotificationsDelegate application:application didReceiveLocalNotification:notification];
-}
-
-#if JSIOS8SDK
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void(^)())completionHandler
-{
-    [self.localNotificationsDelegate application:application handleActionWithIdentifier:identifier forLocalNotification:notification completionHandler:completionHandler];
-}
-
-#if JSIOS9SDK
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier forLocalNotification:(UILocalNotification *)notification withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void(^)())completionHandler
-{
-    [self.localNotificationsDelegate application:application handleActionWithIdentifier:identifier forLocalNotification:notification withResponseInfo:responseInfo completionHandler:completionHandler];
-}
-#endif
-
-#endif
-
 
 #pragma mark - JSApplicationStateRestorationDelegate
 
