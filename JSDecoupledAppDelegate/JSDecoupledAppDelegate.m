@@ -46,7 +46,7 @@ static NSArray *JSApplicationDelegateProperties()
                        NSStringFromSelector(@selector(appDefaultOrientationDelegate)),
                        NSStringFromSelector(@selector(backgroundFetchDelegate)),
                        NSStringFromSelector(@selector(remoteNotificationsDelegate)),
-                       NSStringFromSelector(@selector(localNotificationsDelegate)),
+                       // NSStringFromSelector(@selector(localNotificationsDelegate)),
                        NSStringFromSelector(@selector(stateRestorationDelegate)),
                        NSStringFromSelector(@selector(URLResourceOpeningDelegate)),
                        NSStringFromSelector(@selector(shortcutItemDelegate)),
